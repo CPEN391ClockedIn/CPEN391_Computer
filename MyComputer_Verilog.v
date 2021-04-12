@@ -372,18 +372,22 @@ module MyComputer_Verilog (
 				 
 				 // Real World Signals brought out to Header connections
 				 
-				 .RS232_RxData					(GPIO_1[29]),
-				 .RS232_TxData					(GPIO_1[27]),
+				 .RS232_RxData					(GPIO_1[14]),
+				 .RS232_TxData					(GPIO_1[15]),
 
-				 .GPS_RxData 					(GPIO_1[28]),
-				 .GPS_TxData 					(GPIO_1[26]),
+				 .GPS_RxData 					(GPIO_1[31]),
+				 .GPS_TxData 					(GPIO_1[30]),
 
-				 .BlueTooth_RxData 			(GPIO_1[32]),
-				 .BlueTooth_TxData 			(GPIO_1[34]),
+				 .BlueTooth_RxData 			(GPIO_1[18]),
+				 .BlueTooth_TxData 			(GPIO_1[19]),
 				 
 				 .TouchScreen_RxData 		(GPIO_0[11]),
 				 .TouchScreen_TxData 		(GPIO_0[10])
 		);
+		
+		assign GPIO_1[10] = 1'b1;
+		assign GPIO_1[1]  = 1'b1;
+		
 		
 		// Map 16 bit memory upper and lower data byte strobes to individual wires
 		
@@ -398,25 +402,25 @@ module MyComputer_Verilog (
 		assign IO_UpperByte_Select_L_WIRE 	= ~IO_Byte_Enable_WIRE[1];		
 		assign IO_LowerByte_Select_L_WIRE 	= ~IO_Byte_Enable_WIRE[0];	
 	
-		// wire the LCD wires to the GPIO Header pins
-		// data bits 0 - 7
-		
-		assign GPIO_1[0] = LCD_WIRE[0] ;
-		assign GPIO_1[1] = LCD_WIRE[1] ;
-		assign GPIO_1[2] = LCD_WIRE[2] ;
-		assign GPIO_1[3] = LCD_WIRE[3] ;
-		assign GPIO_1[4] = LCD_WIRE[4] ;
-		assign GPIO_1[5] = LCD_WIRE[5] ;
-		assign GPIO_1[6] = LCD_WIRE[6] ;
-		assign GPIO_1[7] = LCD_WIRE[7] ;
-		
-		// RS, EN and R/W connections and contrast pin
-		assign GPIO_1[11] = LCD_WIRE[8] ;			// LCD_RS
-		assign GPIO_1[13] = LCD_WIRE[9] ;			// LCD_EN
-		assign GPIO_1[15] = LCD_WIRE[10] ;			// LCD_RW
-		
-		// connect contrast pin on 24x2 LCD display to ground	
-		assign GPIO_1[10] = 1'b0;								
+//		// wire the LCD wires to the GPIO Header pins
+//		// data bits 0 - 7
+//		
+//		assign GPIO_1[0] = LCD_WIRE[0] ;
+//		assign GPIO_1[1] = LCD_WIRE[1] ;
+//		assign GPIO_1[2] = LCD_WIRE[2] ;
+//		assign GPIO_1[3] = LCD_WIRE[3] ;
+//		assign GPIO_1[4] = LCD_WIRE[4] ;
+//		assign GPIO_1[5] = LCD_WIRE[5] ;
+//		assign GPIO_1[6] = LCD_WIRE[6] ;
+//		assign GPIO_1[7] = LCD_WIRE[7] ;
+//		
+//		// RS, EN and R/W connections and contrast pin
+//		assign GPIO_1[11] = LCD_WIRE[8] ;			// LCD_RS
+//		assign GPIO_1[13] = LCD_WIRE[9] ;			// LCD_EN
+//		assign GPIO_1[15] = LCD_WIRE[10] ;			// LCD_RW
+//		
+//		// connect contrast pin on 24x2 LCD display to ground	
+//		assign GPIO_1[10] = 1'b0;								
 
 		// process to generate an acknowledge for the IO Bridge 1 clock cycle after bridge IO BUS ENABLE and then remove it 
 		always@(posedge CLOCK_50)

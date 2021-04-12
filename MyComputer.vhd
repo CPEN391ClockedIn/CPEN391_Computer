@@ -630,8 +630,8 @@ BEGIN
 				 GPS_RxData 								=> GPIO_1(28),
 				 GPS_TxData 								=> GPIO_1(26),
 
-				 BlueTooth_RxData 						=> GPIO_1(32),
-				 BlueTooth_TxData 						=> GPIO_1(34),
+				 BlueTooth_RxData 						=> GPIO_1(18),
+				 BlueTooth_TxData 						=> GPIO_1(19),
 				 
 				 TouchScreen_RxData 						=> GPIO_0(11),
 				 TouchScreen_TxData 						=> GPIO_0(10)

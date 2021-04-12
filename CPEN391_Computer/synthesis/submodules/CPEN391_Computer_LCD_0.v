@@ -1,4 +1,4 @@
-//Legal Notice: (C)2018 Altera Corporation. All rights reserved.  Your
+//Legal Notice: (C)2021 Altera Corporation. All rights reserved.  Your
 //use of Altera Corporation's design tools, logic functions and other
 //software and tools, and its AMPP partner logic functions, and any
 //output files any of the foregoing (including device programming or
@@ -42,13 +42,14 @@ module CPEN391_Computer_LCD_0 (
   input            write_n;
   input   [ 31: 0] writedata;
 
-  wire    [ 15: 0] bidir_port;
-  wire             clk_en;
-  reg     [ 15: 0] data_dir;
-  wire    [ 15: 0] data_in;
-  reg     [ 15: 0] data_out;
-  wire    [ 15: 0] read_mux_out;
-  reg     [ 31: 0] readdata;
+
+wire    [ 15: 0] bidir_port;
+wire             clk_en;
+reg     [ 15: 0] data_dir;
+wire    [ 15: 0] data_in;
+reg     [ 15: 0] data_out;
+wire    [ 15: 0] read_mux_out;
+reg     [ 31: 0] readdata;
   assign clk_en = 1;
   //s1, which is an e_avalon_slave
   assign read_mux_out = ({16 {(address == 0)}} & data_in) |
